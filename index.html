@@ -91,11 +91,21 @@ body.modal-open .navbar {
 #certs:hover,
 #about:hover,
 #experience:hover,
+#resume:hover,
 #projects:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 28px rgba(0, 255, 255, 0.12);
   border-color: rgba(0, 255, 255, 0.35);
   background: rgba(255,255,255,0.1);
+}
+
+/* RESUME */
+.resume-viewer {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,255,255,0.2);
+  margin-top: 20px;
 }
 
 /* PROFILE */
@@ -478,6 +488,7 @@ h2 { color: #66fcf1; text-align: center; }
 <div class="navbar">
   <a href="#about">About</a>
   <a href="#experience">Experience</a>
+  <a href="#resume">Resume</a>
   <a href="#projects">Featured Projects</a>
   <a href="#certs">Certifications</a>
   <a href="#contact">Contact</a>
@@ -562,10 +573,15 @@ h2 { color: #66fcf1; text-align: center; }
 
   </div>
 
-<!-- CERTIFICATIONS -->
-<div class="section" id="certs">
+<!-- RESUME -->
+<div class="section" id="resume">
 
-<h2>Certifications</h2>
+<h2>Resume</h2>
+
+<iframe class="resume-viewer" src="resume/resume.pdf"></iframe>
+
+</div>
+
 
 <div class="cert-grid">
 
