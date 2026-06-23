@@ -57,10 +57,10 @@ body {
   border: 3px solid #00ffff;
 }
 
-/* PROJECT GRID */
+/* PROJECT GRID → IMPORTANT FIX */
 .project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 20px;
 }
 
@@ -71,28 +71,36 @@ body {
   border-radius: 16px;
   padding: 15px;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.4s ease;
 }
 
+/* hover */
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-3px);
   box-shadow: 0 0 25px rgba(0,255,255,0.15);
 }
 
+/* ACTIVE FULL EXPAND */
+.project-card.active {
+  background: rgba(255,255,255,0.08);
+}
+
+/* DESCRIPTION */
 .project-desc {
   font-size: 13px;
   opacity: 0.8;
 }
 
-/* PROJECT DETAILS */
+/* DETAILS */
 .project-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.6s ease;
-  margin-top: 10px;
+  transition: max-height 0.6s ease, margin-top 0.3s ease;
 }
 
-.project-details.open {
+/* OPEN STATE */
+.project-card.active .project-details {
+  margin-top: 15px;
   max-height: 2000px;
 }
 
@@ -208,14 +216,15 @@ h2 { color: #66fcf1; text-align: center; }
 
 <div class="project-grid">
 
-<!-- ================= ISLAND HOPPER ================= -->
-<div class="project-card" onclick="toggleProject('p1')">
+<!-- ISLAND HOPPER -->
+<div class="project-card" onclick="toggleProject(this)">
+
   <h3>Island Hopper PH</h3>
   <div class="project-desc">
     Travel & tourism system for itinerary planning, booking, and destination discovery.
   </div>
 
-  <div id="p1" class="project-details">
+  <div class="project-details">
 
     <img src="images/projects/project1.png" class="project-image">
     <img src="images/projects/project11.png" class="project-image">
@@ -241,47 +250,43 @@ h2 { color: #66fcf1; text-align: center; }
       <li>Geolocation API</li>
       <li>PayPal REST API</li>
     </ul>
+
   </div>
 </div>
 
-<!-- ================= BREEZEEASE ================= -->
-<div class="project-card" onclick="toggleProject('p2')">
-  <h3>BreezeEase</h3>
+<!-- BREEZEEASE -->
+<div class="project-card" onclick="toggleProject(this)">
 
+  <h3>BreezeEase</h3>
   <div class="project-desc">
-    Mobile AC service system with location tracking, predictive maintenance, and service recommendations.
+    Mobile AC service system with predictive maintenance and smart recommendations.
   </div>
 
-  <div id="p2" class="project-details">
+  <div class="project-details">
 
     <p>
-      BreezeEase is a mobile application designed to improve air-conditioning service management
-      through smart location tracking, predictive analytics, and automated maintenance systems.
+      BreezeEase is a mobile application that uses location tracking, predictive analytics,
+      and intelligent maintenance recommendations for air-conditioning services.
     </p>
 
     <p>
-      It integrates OpenStreetMap API for location pinning and service logistics,
-      and Firebase Cloud Messaging for real-time job updates and maintenance reminders.
+      It integrates OpenStreetMap API for location services and Firebase Cloud Messaging
+      for real-time job updates and maintenance alerts.
     </p>
 
     <p>
-      The system uses a weighted review model stored in Firebase Firestore
-      to evaluate service quality and customer feedback.
-    </p>
-
-    <p>
-      It also implements a Random Forest Classifier to predict AC breakdown risks
-      and a rule-based prescriptive model to recommend preventive maintenance.
+      It uses Firestore for review scoring, a Random Forest model for failure prediction,
+      and rule-based logic for maintenance recommendations.
     </p>
 
     <h3>Technology Stack</h3>
     <ul>
-      <li>Mobile Application (Android / Cross-platform concept)</li>
+      <li>Mobile App Development</li>
       <li>OpenStreetMap API</li>
       <li>Firebase Firestore</li>
       <li>Firebase Cloud Messaging</li>
-      <li>Random Forest Classifier (ML Model)</li>
-      <li>Rule-based Recommendation System</li>
+      <li>Machine Learning (Random Forest)</li>
+      <li>Rule-based Systems</li>
     </ul>
 
   </div>
@@ -337,8 +342,15 @@ h2 { color: #66fcf1; text-align: center; }
 
 <script>
 
-function toggleProject(id) {
-  document.getElementById(id).classList.toggle("open");
+function toggleProject(card) {
+
+  // close all
+  document.querySelectorAll('.project-card').forEach(c => {
+    if (c !== card) c.classList.remove('active');
+  });
+
+  // toggle clicked
+  card.classList.toggle('active');
 }
 
 function openPDF(file) {
