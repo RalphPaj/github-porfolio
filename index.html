@@ -237,6 +237,39 @@ body.modal-open .navbar {
 h1 { color: white; font-size: 42px; }
 h2 { color: #66fcf1; text-align: center; }
 
+/* KEYPOINTS */
+.keypoints {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.keypoint {
+  background: rgba(0,255,255,0.1);
+  border: 1px solid rgba(0,255,255,0.3);
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.3s;
+}
+
+.keypoint:hover {
+  background: rgba(0,255,255,0.15);
+  box-shadow: 0 0 20px rgba(0,255,255,0.2);
+}
+
+.keypoint h3 {
+  color: #00ffff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.keypoint p {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
 </style>
 </head>
 
@@ -264,26 +297,25 @@ h2 { color: #66fcf1; text-align: center; }
   <h1>Ralph Clarence V. Pajuleras</h1>
 
   <p>
-    I am a software developer and full-stack engineer with a passion for building scalable,
-    secure, and user-centered digital solutions. I specialize in designing and developing
-    web and mobile applications that solve real-world problems across travel, tourism, and
-    service sectors.
+    Full-stack software developer specializing in web and mobile applications. I build secure,
+    scalable solutions using modern technologies and best practices, with a focus on cybersecurity,
+    networking, and delivering user-centered experiences.
   </p>
 
-  <p>
-    My expertise spans multiple technologies including C# with ASP.NET Core MVC, mobile app
-    development, API integration, and cloud-based services. I have a strong foundation in
-    cybersecurity, network architecture, and database design, which I apply to ensure robust
-    and protected systems. I'm proficient with tools like Firebase, SQL Server, OpenStreetMap,
-    and payment processing systems.
-  </p>
-
-  <p>
-    I am driven by continuous learning and stay current with modern development practices,
-    security standards, and emerging technologies. Whether collaborating with teams or working
-    independently, I am committed to delivering high-quality solutions that prioritize
-    functionality, security, and user experience.
-  </p>
+  <div class="keypoints">
+    <div class="keypoint">
+      <h3>Full-Stack Development</h3>
+      <p>C#, ASP.NET Core MVC, mobile apps, and cloud services across multiple platforms.</p>
+    </div>
+    <div class="keypoint">
+      <h3>Security & Networking</h3>
+      <p>Cybersecurity, network architecture, and protected system design.</p>
+    </div>
+    <div class="keypoint">
+      <h3>Problem Solving</h3>
+      <p>Delivering practical solutions that prioritize functionality and user experience.</p>
+    </div>
+  </div>
 
 </div>
 
