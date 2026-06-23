@@ -50,16 +50,6 @@ body {
   border-radius: 16px;
 }
 
-h1 {
-  font-size: 42px;
-  color: white;
-}
-
-h2 {
-  color: #66fcf1;
-  text-align: center;
-}
-
 /* PROFILE */
 .profile-pic {
   width: 180px;
@@ -67,16 +57,14 @@ h2 {
   border: 3px solid #00ffff;
 }
 
-/* =========================
-   PROJECT CARDS (NEW STYLE)
-========================= */
-
+/* PROJECT GRID */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
+/* PROJECT CARD */
 .project-card {
   background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.15);
@@ -91,26 +79,21 @@ h2 {
   box-shadow: 0 0 25px rgba(0,255,255,0.15);
 }
 
-.project-card h3 {
-  margin-bottom: 8px;
-  color: #ffffff;
-}
-
 .project-desc {
   font-size: 13px;
   opacity: 0.8;
 }
 
-/* EXPAND CONTENT */
+/* PROJECT DETAILS */
 .project-details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  transition: max-height 0.6s ease;
   margin-top: 10px;
 }
 
 .project-details.open {
-  max-height: 1500px;
+  max-height: 2000px;
 }
 
 .project-image {
@@ -189,6 +172,9 @@ h2 {
   cursor: pointer;
 }
 
+h1 { color: white; font-size: 42px; }
+h2 { color: #66fcf1; text-align: center; }
+
 </style>
 </head>
 
@@ -207,7 +193,11 @@ h2 {
   <img src="images/profile.jpg" class="profile-pic">
 
   <h1>Ralph Clarence V. Pajuleras</h1>
-  <p>I build websites and software projects. Interested in cybersecurity, networking, and web development.</p>
+
+  <p>
+    I build websites and software projects.
+    Interested in cybersecurity, networking, and web development.
+  </p>
 
 </div>
 
@@ -218,7 +208,7 @@ h2 {
 
 <div class="project-grid">
 
-<!-- PROJECT 1 -->
+<!-- ================= ISLAND HOPPER ================= -->
 <div class="project-card" onclick="toggleProject('p1')">
   <h3>Island Hopper PH</h3>
   <div class="project-desc">
@@ -232,7 +222,7 @@ h2 {
     <img src="images/projects/project12.png" class="project-image">
 
     <p>
-      A travel and tourism management system designed for local travelers, international tourists, families, backpackers, and travel agencies.
+      A travel and tourism management system for local and international travelers, families, backpackers, and agencies.
     </p>
 
     <p>
@@ -240,16 +230,58 @@ h2 {
     </p>
 
     <p>
-      It helps boost local tourism and improves travel accessibility in the Philippines.
+      Helps improve tourism accessibility and supports local economic growth.
     </p>
 
     <h3>Technology Stack</h3>
     <ul>
       <li>C# (ASP.NET Core MVC)</li>
-      <li>SQL Server Management Studio (SSMS)</li>
+      <li>SQL Server Management Studio</li>
       <li>OpenStreetMap API</li>
       <li>Geolocation API</li>
       <li>PayPal REST API</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ================= BREEZEEASE ================= -->
+<div class="project-card" onclick="toggleProject('p2')">
+  <h3>BreezeEase</h3>
+
+  <div class="project-desc">
+    Mobile AC service system with location tracking, predictive maintenance, and service recommendations.
+  </div>
+
+  <div id="p2" class="project-details">
+
+    <p>
+      BreezeEase is a mobile application designed to improve air-conditioning service management
+      through smart location tracking, predictive analytics, and automated maintenance systems.
+    </p>
+
+    <p>
+      It integrates OpenStreetMap API for location pinning and service logistics,
+      and Firebase Cloud Messaging for real-time job updates and maintenance reminders.
+    </p>
+
+    <p>
+      The system uses a weighted review model stored in Firebase Firestore
+      to evaluate service quality and customer feedback.
+    </p>
+
+    <p>
+      It also implements a Random Forest Classifier to predict AC breakdown risks
+      and a rule-based prescriptive model to recommend preventive maintenance.
+    </p>
+
+    <h3>Technology Stack</h3>
+    <ul>
+      <li>Mobile Application (Android / Cross-platform concept)</li>
+      <li>OpenStreetMap API</li>
+      <li>Firebase Firestore</li>
+      <li>Firebase Cloud Messaging</li>
+      <li>Random Forest Classifier (ML Model)</li>
+      <li>Rule-based Recommendation System</li>
     </ul>
 
   </div>
@@ -306,8 +338,7 @@ h2 {
 <script>
 
 function toggleProject(id) {
-  const el = document.getElementById(id);
-  el.classList.toggle("open");
+  document.getElementById(id).classList.toggle("open");
 }
 
 function openPDF(file) {
