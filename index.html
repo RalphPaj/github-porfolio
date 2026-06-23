@@ -439,6 +439,29 @@ h2 { color: #66fcf1; text-align: center; }
   filter: saturate(1.2);
 }
 
+.fidget-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1200;
+  font-size: 18px;
+  animation: float-up 900ms ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translate(-50%, 0) scale(0.7) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -80px) scale(1.2) rotate(18deg);
+    opacity: 0;
+  }
+}
+
 .fidget-note {
   margin-top: 12px;
   font-size: 13px;
@@ -895,6 +918,7 @@ function closeModal() {
 }
 
 let fidgetClicks = 0;
+const fidgetEmojis = ["✨", "💫", "🎈", "⚡", "🌟"];
 
 function fidgetClick() {
   fidgetClicks += 1;
@@ -907,6 +931,10 @@ function fidgetClick() {
   void button.offsetWidth;
   button.classList.add("bump");
 
+  const hue = Math.floor(Math.random() * 360);
+  button.style.background = `linear-gradient(135deg, hsl(${hue}, 100%, 60%), hsl(${(hue + 50) % 360}, 100%, 72%))`;
+  button.style.boxShadow = `0 0 24px hsla(${hue}, 100%, 60%, 0.35)`;
+
   count.textContent = fidgetClicks;
 
   if (fidgetClicks % 5 === 0) {
@@ -917,9 +945,52 @@ function fidgetClick() {
     status.textContent = "Keep clicking to trigger effects.";
   }
 
+  playFidgetSound();
+  spawnFidgetTrail(button);
+
   window.setTimeout(() => {
     button.classList.remove("bump");
   }, 180);
+}
+
+function playFidgetSound() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return;
+
+  const audioContext = new AudioContextClass();
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+
+  oscillator.type = "triangle";
+  oscillator.frequency.setValueAtTime(420 + Math.random() * 160, audioContext.currentTime);
+  oscillator.frequency.exponentialRampToValueAtTime(220, audioContext.currentTime + 0.12);
+
+  gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.08, audioContext.currentTime + 0.01);
+  gainNode.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.14);
+
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+
+  oscillator.start();
+  oscillator.stop(audioContext.currentTime + 0.16);
+
+  oscillator.onended = () => audioContext.close();
+}
+
+function spawnFidgetTrail(button) {
+  const rect = button.getBoundingClientRect();
+  const emoji = document.createElement("span");
+  emoji.className = "fidget-particle";
+  emoji.textContent = fidgetEmojis[Math.floor(Math.random() * fidgetEmojis.length)];
+  emoji.style.left = `${rect.left + rect.width / 2 + (Math.random() * 40 - 20)}px`;
+  emoji.style.top = `${rect.top + 10}px`;
+  emoji.style.animationDuration = `${700 + Math.random() * 300}ms`;
+  document.body.appendChild(emoji);
+
+  window.setTimeout(() => {
+    emoji.remove();
+  }, 1000);
 }
 
 </script>
