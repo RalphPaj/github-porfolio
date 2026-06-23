@@ -356,6 +356,39 @@ h2 { color: #66fcf1; text-align: center; }
   }
 }
 
+/* CONTACT */
+.contact-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.contact-item {
+  display: block;
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0,255,255,0.35);
+  box-shadow: 0 0 18px rgba(0,255,255,0.14);
+  background: rgba(255,255,255,0.09);
+}
+
+.contact-item span {
+  display: block;
+  margin-top: 4px;
+  color: #66fcf1;
+  font-weight: bold;
+  word-break: break-word;
+}
+
 </style>
 </head>
 
@@ -373,6 +406,7 @@ h2 { color: #66fcf1; text-align: center; }
   <a href="#about">About</a>
   <a href="#projects">Featured Projects</a>
   <a href="#certs">Certifications</a>
+  <a href="#contact">Contact</a>
 </div>
 
 <!-- ABOUT -->
@@ -523,6 +557,35 @@ h2 { color: #66fcf1; text-align: center; }
   </div>
 </div>
 
+</div>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+
+<h2>Contact</h2>
+
+<div class="contact-list">
+  <a class="contact-item" href="mailto:ralphpajuleras@gmail.com">
+    Email me at
+    <span>ralphpajuleras@gmail.com</span>
+  </a>
+
+  <a class="contact-item" href="tel:09076946457">
+    Contact me at
+    <span>09076946457</span>
+  </a>
+
+  <a class="contact-item" href="https://www.linkedin.com/in/ralph-pajuleras-598287399/" target="_blank" rel="noopener noreferrer">
+    LinkedIn
+    <span>linkedin.com/in/ralph-pajuleras-598287399/</span>
+  </a>
+
+  <a class="contact-item" href="https://github.com/RalphPaj" target="_blank" rel="noopener noreferrer">
+    GitHub
+    <span>github.com/RalphPaj</span>
+  </a>
 </div>
 
 </div>
