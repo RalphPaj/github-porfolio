@@ -19,56 +19,40 @@
       background: black;
     }
 
-    /* FULLSCREEN BACKGROUND VIDEO */
-
+    /* BACKGROUND VIDEO */
     #bg-video {
       position: fixed;
       top: 0;
       left: 0;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
-
       z-index: -2;
     }
 
     /* DARK OVERLAY */
-
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
-
       width: 100%;
       height: 100%;
-
       background: rgba(0, 0, 0, 0.60);
-
       z-index: -1;
     }
 
-    /* GLASS SECTIONS */
-
+    /* SECTIONS */
     .section {
       background: rgba(255, 255, 255, 0.08);
-
       border: 1px solid rgba(255,255,255,0.15);
-
       backdrop-filter: blur(8px);
-
       padding: 25px;
       margin-bottom: 25px;
-
       border-radius: 16px;
-
       box-shadow:
         0 0 20px rgba(0,255,255,0.15),
         0 0 40px rgba(0,255,255,0.05);
     }
-
-    /* TITLES */
 
     h1 {
       font-size: 42px;
@@ -80,88 +64,75 @@
     }
 
     h3 {
-      color: #ffffff;
+      color: white;
     }
 
-    /* PROFILE IMAGE */
-
+    /* PROFILE */
     .profile-pic {
       width: 180px;
-
       border-radius: 50%;
-
       border: 3px solid #00ffff;
-
       box-shadow:
         0 0 15px #00ffff,
         0 0 30px rgba(0,255,255,0.5);
-
       margin-bottom: 15px;
     }
 
-    /* PROJECT CARDS */
-
+    /* PROJECT */
     .project {
       border: 1px solid rgba(255,255,255,0.15);
-
       padding: 20px;
-
-      margin-top: 20px;
-
+      margin-top: 15px;
       border-radius: 12px;
-
       background: rgba(255,255,255,0.04);
     }
 
-    /* PROJECT IMAGES */
-
     .project-image {
       width: 100%;
-
       border-radius: 12px;
-
       margin-bottom: 15px;
-
       border: 1px solid rgba(255,255,255,0.15);
-
-      box-shadow:
-        0 0 10px rgba(0,255,255,0.1);
     }
 
-    /* CERTIFICATE BUTTONS */
+    /* DROPDOWN */
+    .dropdown-btn {
+      width: 100%;
+      padding: 15px;
+      background: rgba(0,255,255,0.10);
+      border: 1px solid #00ffff;
+      color: white;
+      font-size: 18px;
+      text-align: left;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
+    .dropdown-btn:hover {
+      background: rgba(0,255,255,0.25);
+    }
+
+    .dropdown-content {
+      display: none;
+      margin-top: 20px;
+    }
+
+    /* CERTIFICATES */
     .certificates a {
       display: inline-block;
-
       margin: 10px 10px 0 0;
-
       padding: 10px 18px;
-
       background: rgba(0,255,255,0.15);
-
       border: 1px solid #00ffff;
-
       color: white;
-
       text-decoration: none;
-
       border-radius: 10px;
-
       transition: 0.3s;
     }
 
     .certificates a:hover {
       background: #00ffff;
-
       color: black;
-
-      box-shadow:
-        0 0 10px #00ffff,
-        0 0 25px #00ffff;
-    }
-
-    ul {
-      padding-left: 20px;
     }
 
   </style>
@@ -169,133 +140,98 @@
 
 <body>
 
-  <!-- BACKGROUND VIDEO -->
-
+  <!-- BACKGROUND -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="videos/background.mp4" type="video/mp4">
   </video>
 
-  <!-- DARK OVERLAY -->
-
   <div class="overlay"></div>
 
-  <!-- ABOUT SECTION -->
-
+  <!-- ABOUT -->
   <div class="section">
 
-    <img src="images/profile.jpg"
-         alt="Profile Picture"
-         class="profile-pic">
+    <img src="images/profile.jpg" class="profile-pic" alt="Profile">
 
     <h1>Ralph Clarence V. Pajuleras</h1>
 
     <p>
       I build websites and software projects.
-      I am interested in cybersecurity,
-      networking, and web development.
+      Interested in cybersecurity, networking, and web development.
     </p>
 
   </div>
 
-  <!-- PROJECTS SECTION -->
-
+  <!-- PROJECTS -->
   <div class="section">
 
     <h2>Projects</h2>
 
-    <!-- ISLAND HOPPER PROJECT -->
-
+    <!-- ISLAND HOPPER DROPDOWN -->
     <div class="project">
 
-      <img src="images/projects/project1.png"
-           alt="Island Hopper Screenshot 1"
-           class="project-image">
+      <button class="dropdown-btn" onclick="toggleProject('islandhopper')">
+        Island Hopper PH ▼
+      </button>
 
-      <img src="images/projects/project11.png"
-           alt="Island Hopper Screenshot 2"
-           class="project-image">
+      <div id="islandhopper" class="dropdown-content">
 
-      <img src="images/projects/project12.png"
-           alt="Island Hopper Screenshot 3"
-           class="project-image">
+        <img src="images/projects/project1.png" class="project-image">
+        <img src="images/projects/project11.png" class="project-image">
+        <img src="images/projects/project12.png" class="project-image">
 
-      <h3>Island Hopper</h3>
+        <h3>Island Hopper PH</h3>
 
-      <p>
-        Island Hopper is a travel and tourism management system
-        designed for local travelers, international tourists,
-        families, backpackers, and travel agencies.
-      </p>
+        <p>
+          Island Hopper is a travel and tourism management system
+          for local and international travelers, families, backpackers,
+          and travel agencies.
+        </p>
 
-      <p>
-        The platform provides detailed destination information,
-        flexible itinerary planning, budget estimation,
-        travel navigation, real-time updates,
-        and convenient booking options.
-      </p>
+        <p>
+          It provides destination information, itinerary planning,
+          budget estimation, navigation, real-time updates,
+          and booking features.
+        </p>
 
-      <p>
-        The system helps boost local tourism by making
-        destinations more accessible and appealing,
-        supporting community economic growth,
-        streamlining bookings,
-        and enhancing the Philippines'
-        reputation as a top travel destination.
-      </p>
+        <p>
+          It helps boost tourism, support local economy,
+          and improve travel accessibility in the Philippines.
+        </p>
 
-      <h3>Technology Stack</h3>
+        <h3>Technology Stack</h3>
 
-      <ul>
-        <li><strong>Programming Language:</strong> C# (ASP.NET Core MVC)</li>
+        <ul>
+          <li>C# (ASP.NET Core MVC)</li>
+          <li>SQL Server Management Studio (SSMS)</li>
+          <li>OpenStreetMap API</li>
+          <li>Geolocation API</li>
+          <li>PayPal REST API</li>
+        </ul>
 
-        <li><strong>Database:</strong> SQL Server Management Studio (SSMS)</li>
-
-        <li><strong>APIs:</strong> OpenStreetMap API, Geolocation API, PayPal REST API</li>
-      </ul>
-
-      <p>
-        ASP.NET Core MVC provides a flexible framework
-        for developing a modern web application aligned
-        with the project's requirements.
-      </p>
-
-      <p>
-        SSMS ensures reliable data storage and management,
-        while APIs enhance the platform with live data integration,
-        scalability, security, and efficient performance.
-      </p>
-
+      </div>
     </div>
 
   </div>
 
-  <!-- CERTIFICATES SECTION -->
-
+  <!-- CERTIFICATES -->
   <div class="section certificates">
 
     <h2>Certificates</h2>
 
-    <a href="certificates/NetworkSecurity.pdf"
-       target="_blank">
-       Network Security
-    </a>
-
-    <a href="certificates/HTMLandCSS.pdf"
-       target="_blank">
-       HTML and CSS
-    </a>
-
-    <a href="certificates/Databases.pdf"
-       target="_blank">
-       Databases
-    </a>
-
-    <a href="certificates/Cybersecurity.pdf"
-       target="_blank">
-       Cybersecurity
-    </a>
+    <a href="certificates/NetworkSecurity.pdf" target="_blank">Network Security</a>
+    <a href="certificates/HTMLandCSS.pdf" target="_blank">HTML and CSS</a>
+    <a href="certificates/Databases.pdf" target="_blank">Databases</a>
+    <a href="certificates/Cybersecurity.pdf" target="_blank">Cybersecurity</a>
 
   </div>
+
+  <!-- SCRIPT -->
+  <script>
+    function toggleProject(id) {
+      const el = document.getElementById(id);
+      el.style.display = (el.style.display === "block") ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
