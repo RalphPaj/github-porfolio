@@ -488,7 +488,7 @@ h2 { color: #66fcf1; text-align: center; }
 <div class="navbar">
   <a href="#about">About</a>
   <a href="#experience">Experience</a>
-  <a href="#resume">Resume</a>
+  <a href="javascript:openResume()" style="cursor:pointer;">Resume</a>
   <a href="#projects">Featured Projects</a>
   <a href="#certs">Certifications</a>
   <a href="#contact">Contact</a>
@@ -573,15 +573,10 @@ h2 { color: #66fcf1; text-align: center; }
 
   </div>
 
-<!-- RESUME -->
-<div class="section" id="resume">
+<!-- CERTIFICATIONS -->
+<div class="section" id="certs">
 
-<h2>Resume</h2>
-
-<iframe class="resume-viewer" src="resume/resume.pdf"></iframe>
-
-</div>
-
+<h2>Certifications</h2>
 
 <div class="cert-grid">
 
@@ -757,6 +752,15 @@ function openPDF(file) {
   document.getElementById("imageViewer").src = "";
   document.getElementById("pdfViewer").style.display = "block";
   document.getElementById("pdfViewer").src = file;
+}
+
+function openResume() {
+  document.body.classList.add("modal-open");
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("imageViewer").style.display = "none";
+  document.getElementById("imageViewer").src = "";
+  document.getElementById("pdfViewer").style.display = "block";
+  document.getElementById("pdfViewer").src = "resume/resume.pdf";
 }
 
 function closeModal() {
