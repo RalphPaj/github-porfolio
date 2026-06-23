@@ -128,10 +128,32 @@ body {
   max-height: 2000px;
 }
 
+/* MAIN PROJECT IMAGES */
 .project-image {
   width: 100%;
   border-radius: 12px;
   margin-top: 10px;
+}
+
+/* ✅ BREEZEEASE IMAGE GRID FIX */
+.breeze-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.breeze-grid img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: 0.3s;
+}
+
+.breeze-grid img:hover {
+  transform: scale(1.05);
 }
 
 /* CERTIFICATES */
@@ -255,7 +277,6 @@ h2 { color: #66fcf1; text-align: center; }
   </div>
 
   <div class="project-details">
-
     <img src="images/projects/project1.png" class="project-image">
     <img src="images/projects/project11.png" class="project-image">
     <img src="images/projects/project12.png" class="project-image">
@@ -263,27 +284,28 @@ h2 { color: #66fcf1; text-align: center; }
     <p>
       A travel and tourism management system for local and international travelers.
     </p>
-
   </div>
 </div>
 
-<!-- BREEZEEASE (FIXED IMAGES) -->
+<!-- BREEZEEASE (FIXED SMALL IMAGES) -->
 <div class="project-card" onclick="toggleProject(this)">
   <h3>BreezeEase</h3>
+
   <div class="project-desc">
     Mobile AC service system with predictive maintenance and smart recommendations.
   </div>
 
   <div class="project-details">
 
-    <!-- ✅ YOUR ADDED IMAGES -->
-    <img src="images/projects/project2.png" class="project-image">
-    <img src="images/projects/project21.png" class="project-image">
-    <img src="images/projects/project22.png" class="project-image">
+    <div class="breeze-grid">
+      <img src="images/projects/project2.png">
+      <img src="images/projects/project21.png">
+      <img src="images/projects/project22.png">
+    </div>
 
     <p>
       BreezeEase is a mobile application designed for AC service tracking, predictive maintenance,
-      and smart service recommendations using AI and location services.
+      and smart recommendations using AI and location services.
     </p>
 
   </div>
