@@ -19,7 +19,7 @@ body {
   background: black;
 }
 
-/* BACKGROUND */
+/* BACKGROUND VIDEO */
 #bg-video {
   position: fixed;
   top: 0;
@@ -30,24 +30,43 @@ body {
   z-index: -2;
 }
 
+/* DARK OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.60);
   z-index: -1;
 }
 
 /* SECTIONS */
 .section {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(8px);
   padding: 25px;
   margin-bottom: 25px;
   border-radius: 16px;
+  box-shadow:
+    0 0 20px rgba(0,255,255,0.15),
+    0 0 40px rgba(0,255,255,0.05);
+}
+
+h1 {
+  font-size: 42px;
+  color: white;
+}
+
+h2 {
+  color: #66fcf1;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  margin-bottom: 5px;
 }
 
 /* PROFILE */
@@ -55,46 +74,65 @@ body {
   width: 180px;
   border-radius: 50%;
   border: 3px solid #00ffff;
+  box-shadow:
+    0 0 15px #00ffff,
+    0 0 30px rgba(0,255,255,0.5);
+  margin-bottom: 15px;
 }
 
 /* PROJECT */
 .project {
+  border: 1px solid rgba(255,255,255,0.15);
   padding: 20px;
   margin-top: 15px;
   border-radius: 12px;
   background: rgba(255,255,255,0.04);
 }
 
+.project-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
 /* DROPDOWN */
 .dropdown-btn {
   width: 100%;
   padding: 15px;
-  background: rgba(0,255,255,0.1);
+  background: rgba(0,255,255,0.10);
   border: 1px solid #00ffff;
   color: white;
   font-size: 18px;
+  text-align: left;
   border-radius: 12px;
   cursor: pointer;
+  transition: 0.3s;
 }
 
+.dropdown-btn:hover {
+  background: rgba(0,255,255,0.25);
+}
+
+.dropdown-desc {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-top: 5px;
+}
+
+/* SMOOTH DROPDOWN */
 .dropdown-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.5s ease;
+  margin-top: 15px;
+  transition: max-height 0.5s ease-in-out;
 }
 
 .dropdown-content.open {
   max-height: 2000px;
 }
 
-/* PROJECT IMAGES */
-.project-image {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-}
-
-/* CERT GRID */
+/* CERTIFICATES GRID */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -158,10 +196,6 @@ body {
   cursor: pointer;
 }
 
-.cert-title {
-  text-align: center;
-}
-
 </style>
 </head>
 
@@ -176,8 +210,16 @@ body {
 
 <!-- ABOUT -->
 <div class="section">
+
   <img src="images/profile.jpg" class="profile-pic">
+
   <h1>Ralph Clarence V. Pajuleras</h1>
+
+  <p>
+    I build websites and software projects.
+    Interested in cybersecurity, networking, and web development.
+  </p>
+
 </div>
 
 <!-- PROJECTS -->
@@ -197,7 +239,33 @@ Island Hopper PH
 <img src="images/projects/project11.png" class="project-image">
 <img src="images/projects/project12.png" class="project-image">
 
-<p>Travel & tourism system for itinerary planning, booking, and destinations.</p>
+<h3>Island Hopper PH</h3>
+
+<p>
+Island Hopper is a travel and tourism management system
+for local and international travelers, families, backpackers,
+and travel agencies.
+</p>
+
+<p>
+It provides itinerary planning, budget estimation,
+navigation, real-time updates, and booking features.
+</p>
+
+<p>
+It helps boost tourism and improve travel accessibility
+in the Philippines.
+</p>
+
+<h3>Technology Stack</h3>
+
+<ul>
+  <li>C# (ASP.NET Core MVC)</li>
+  <li>SQL Server Management Studio (SSMS)</li>
+  <li>OpenStreetMap API</li>
+  <li>Geolocation API</li>
+  <li>PayPal REST API</li>
+</ul>
 
 </div>
 
@@ -208,7 +276,7 @@ Island Hopper PH
 <!-- CERTIFICATES -->
 <div class="section">
 
-<h2 class="cert-title">Certificates</h2>
+<h2>Certificates</h2>
 
 <div class="cert-grid">
 
