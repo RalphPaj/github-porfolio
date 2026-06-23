@@ -65,20 +65,9 @@
 
     h3 {
       color: white;
+      margin-bottom: 5px;
     }
 
-    /* PROFILE */
-    .profile-pic {
-      width: 180px;
-      border-radius: 50%;
-      border: 3px solid #00ffff;
-      box-shadow:
-        0 0 15px #00ffff,
-        0 0 30px rgba(0,255,255,0.5);
-      margin-bottom: 15px;
-    }
-
-    /* PROJECT */
     .project {
       border: 1px solid rgba(255,255,255,0.15);
       padding: 20px;
@@ -110,6 +99,12 @@
 
     .dropdown-btn:hover {
       background: rgba(0,255,255,0.25);
+    }
+
+    .dropdown-desc {
+      font-size: 13px;
+      opacity: 0.8;
+      margin-top: 4px;
     }
 
     .dropdown-content {
@@ -166,11 +161,15 @@
 
     <h2>Projects</h2>
 
-    <!-- ISLAND HOPPER DROPDOWN -->
+    <!-- ISLAND HOPPER -->
     <div class="project">
 
       <button class="dropdown-btn" onclick="toggleProject('islandhopper')">
         Island Hopper PH ▼
+
+        <div class="dropdown-desc">
+          Travel & tourism management system for itinerary planning, booking, and destination discovery.
+        </div>
       </button>
 
       <div id="islandhopper" class="dropdown-content">
