@@ -390,6 +390,78 @@ h2 { color: #66fcf1; text-align: center; }
   word-break: break-word;
 }
 
+/* EXPERIENCE */
+.experience-card {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.experience-title {
+  color: #66fcf1;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.experience-subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-bottom: 16px;
+}
+
+.experience-bullets {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.experience-bullets li {
+  line-height: 1.5;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(0,255,255,0.08);
+  border: 1px solid rgba(0,255,255,0.2);
+  transition: 0.3s ease;
+}
+
+.skill-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(0,255,255,0.15);
+}
+
+.skill-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,255,255,0.16);
+  color: #00ffff;
+  font-size: 16px;
+  flex: 0 0 30px;
+}
+
+.skill-chip span:last-child {
+  font-size: 13px;
+}
+
 </style>
 </head>
 
@@ -405,10 +477,10 @@ h2 { color: #66fcf1; text-align: center; }
 <!-- NAVBAR -->
 <div class="navbar">
   <a href="#about">About</a>
+  <a href="#experience">Experience</a>
   <a href="#projects">Featured Projects</a>
   <a href="#certs">Certifications</a>
-  <a href="experience.html">Experience</a>
-  <a href="contact.html">Contact</a>
+  <a href="#contact">Contact</a>
 </div>
 
 <!-- ABOUT -->
@@ -445,6 +517,43 @@ h2 { color: #66fcf1; text-align: center; }
   <div class="scroll-cue" aria-label="Scroll down indicator">
     <span>Scroll Down</span>
     <div class="mouse"></div>
+  </div>
+
+</div>
+
+  <!-- EXPERIENCE -->
+  <div class="section" id="experience">
+
+  <h2>Experience</h2>
+
+  <div class="experience-card">
+    <div class="experience-title">Information Technology Student</div>
+    <div class="experience-subtitle">University of Mindanao | August 2022 - Present</div>
+
+    <ul class="experience-bullets">
+      <li>Developed a movie ticketing system as part of coursework.</li>
+      <li>Developed a POS and inventory system for an ice cream shop as part of coursework.</li>
+      <li>Developed a web travel planner system where users can manage their itinerary and book places to stay, integrated with a PayPal API payment method.</li>
+      <li>Developed a mobile app using Flutter for a booking and tracking system of an Aircon Service Center.</li>
+      <li>Acquired certifications in Network Security, HTML & CSS, Databases, Cybersecurity, and GitHub.</li>
+      <li>Achieved positive feedback from professors and clients regarding the products developed.</li>
+    </ul>
+
+    <h3 style="color:#66fcf1; margin-top:20px; margin-bottom:10px;">Technical Skills</h3>
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="skill-icon">🎨</span><span>Figma</span></div>
+      <div class="skill-chip"><span class="skill-icon">🖌️</span><span>Canva</span></div>
+      <div class="skill-chip"><span class="skill-icon">🌐</span><span>HTML / CSS</span></div>
+      <div class="skill-chip"><span class="skill-icon">⚙️</span><span>C#</span></div>
+      <div class="skill-chip"><span class="skill-icon">🏗️</span><span>ASP.NET Core MVC</span></div>
+      <div class="skill-chip"><span class="skill-icon">📱</span><span>Flutter</span></div>
+      <div class="skill-chip"><span class="skill-icon">🔥</span><span>Firebase</span></div>
+      <div class="skill-chip"><span class="skill-icon">🗄️</span><span>SQL Server</span></div>
+      <div class="skill-chip"><span class="skill-icon">🗺️</span><span>OpenStreetMap API</span></div>
+      <div class="skill-chip"><span class="skill-icon">💳</span><span>PayPal API</span></div>
+    </div>
+  </div>
+
   </div>
 
 <!-- CERTIFICATIONS -->
@@ -555,6 +664,37 @@ h2 { color: #66fcf1; text-align: center; }
     </p>
 
   </div>
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+
+<h2>Contact</h2>
+
+<div class="contact-list">
+  <a class="contact-item" href="mailto:ralphpajuleras@gmail.com">
+    Email me at
+    <span>ralphpajuleras@gmail.com</span>
+  </a>
+
+  <a class="contact-item" href="tel:09076946457">
+    Contact me at
+    <span>09076946457</span>
+  </a>
+
+  <a class="contact-item" href="https://www.linkedin.com/in/ralph-pajuleras-598287399/" target="_blank" rel="noopener noreferrer">
+    LinkedIn
+    <span>linkedin.com/in/ralph-pajuleras-598287399/</span>
+  </a>
+
+  <a class="contact-item" href="https://github.com/RalphPaj" target="_blank" rel="noopener noreferrer">
+    GitHub
+    <span>github.com/RalphPaj</span>
+  </a>
 </div>
 
 </div>
