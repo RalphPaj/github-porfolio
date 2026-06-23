@@ -163,6 +163,13 @@ h3 {
   padding: 10px;
 }
 
+/* CENTER FEATURED CERTIFICATE (GitHub) */
+.cert-featured {
+  grid-column: 1 / -1;
+  justify-self: center;
+  width: 200px;
+}
+
 /* MODAL */
 .modal {
   display: none;
@@ -281,28 +288,29 @@ in the Philippines.
 <div class="cert-grid">
 
 <div class="cert-card" onclick="openPDF('certificates/NetworkSecurity.pdf')">
-<img src="images/certs/NetworkSecurity.png">
-<p>Network Security</p>
+  <img src="images/certs/NetworkSecurity.png">
+  <p>Network Security</p>
 </div>
 
 <div class="cert-card" onclick="openPDF('certificates/HTMLandCSS.pdf')">
-<img src="images/certs/HTMLandCSS.png">
-<p>HTML & CSS</p>
+  <img src="images/certs/HTMLandCSS.png">
+  <p>HTML & CSS</p>
 </div>
 
 <div class="cert-card" onclick="openPDF('certificates/Databases.pdf')">
-<img src="images/certs/Databases.png">
-<p>Databases</p>
+  <img src="images/certs/Databases.png">
+  <p>Databases</p>
 </div>
 
 <div class="cert-card" onclick="openPDF('certificates/Cybersecurity.pdf')">
-<img src="images/certs/Cybersecurity.png">
-<p>Cybersecurity</p>
+  <img src="images/certs/Cybersecurity.png">
+  <p>Cybersecurity</p>
 </div>
 
-<div class="cert-card" onclick="openPDF('certificates/GitHub.pdf')">
-<img src="images/certs/GitHub.png">
-<p>GitHub</p>
+<!-- FEATURED (CENTERED LAST CERTIFICATE) -->
+<div class="cert-card cert-featured" onclick="openPDF('certificates/GitHub.pdf')">
+  <img src="images/certs/GitHub.png">
+  <p>GitHub</p>
 </div>
 
 </div>
