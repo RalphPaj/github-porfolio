@@ -67,6 +67,13 @@ body {
   opacity: 1;
 }
 
+/* Hide nav while certificate modal is open */
+body.modal-open .navbar {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* SECTIONS */
 .section {
   background: rgba(255,255,255,0.08);
@@ -369,11 +376,13 @@ function toggleProject(card) {
 }
 
 function openPDF(file) {
+  document.body.classList.add("modal-open");
   document.getElementById("modal").style.display = "flex";
   document.getElementById("pdfViewer").src = file;
 }
 
 function closeModal() {
+  document.body.classList.remove("modal-open");
   document.getElementById("modal").style.display = "none";
   document.getElementById("pdfViewer").src = "";
 }
