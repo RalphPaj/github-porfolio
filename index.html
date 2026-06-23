@@ -466,21 +466,50 @@ h2 { color: #66fcf1; text-align: center; }
   position: fixed;
   pointer-events: none;
   z-index: 1300;
-  font-size: 26px;
-  animation: celebration-burst 2200ms ease-out forwards;
+  font-size: 28px;
+  animation: celebration-burst 2600ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   will-change: transform, opacity;
+  transform-origin: center;
+  backface-visibility: hidden;
 }
 
 @keyframes celebration-burst {
   0% {
-    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    transform: translate(0, 0) scale(0.3) rotate(-20deg);
     opacity: 0;
   }
-  10% {
+  5% {
+    opacity: 1;
+  }
+  90% {
     opacity: 1;
   }
   100% {
-    transform: translate(calc(var(--dx) * 1.25), calc(var(--dy) * 1.25)) scale(1.6) rotate(var(--rot));
+    transform: translate(var(--dx), var(--dy)) scale(2) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
+.celebration-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(102, 252, 241, 0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 1299;
+  animation: flash-burst 600ms ease-out forwards;
+}
+
+@keyframes flash-burst {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
     opacity: 0;
   }
 }
@@ -1023,32 +1052,57 @@ function spawnFidgetTrail(button) {
 }
 
 function triggerCelebration() {
-  const burstCount = 90;
+  const flash = document.createElement("div");
+  flash.className = "celebration-flash";
+  document.body.appendChild(flash);
+  
+  window.setTimeout(() => {
+    flash.remove();
+  }, 650);
 
-  for (let i = 0; i < burstCount; i += 1) {
-    const emoji = document.createElement("span");
-    emoji.className = "celebration-burst";
-    emoji.textContent = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+  const totalEmojis = 120;
+  const waves = 4;
+  const emojisPerWave = Math.ceil(totalEmojis / waves);
+  const waveDelay = 60;
 
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    const dx = `${(Math.random() * 2 - 1) * 260}px`;
-    const dy = `${(Math.random() * 2 - 1) * 220}px`;
-    const rot = `${(Math.random() * 2 - 1) * 220}deg`;
-
-    emoji.style.left = `${x}px`;
-    emoji.style.top = `${y}px`;
-    emoji.style.setProperty("--dx", dx);
-    emoji.style.setProperty("--dy", dy);
-    emoji.style.setProperty("--rot", rot);
-    emoji.style.fontSize = `${18 + Math.random() * 22}px`;
-
-    document.body.appendChild(emoji);
-
+  for (let wave = 0; wave < waves; wave++) {
     window.setTimeout(() => {
-      emoji.remove();
-    }, 2400);
+      const startIdx = wave * emojisPerWave;
+      const endIdx = Math.min(startIdx + emojisPerWave, totalEmojis);
+
+      for (let i = startIdx; i < endIdx; i++) {
+        spawnConfetti();
+      }
+    }, wave * waveDelay);
   }
+}
+
+function spawnConfetti() {
+  const emoji = document.createElement("span");
+  emoji.className = "celebration-burst";
+  emoji.textContent = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+
+  const x = Math.random() * window.innerWidth;
+  const y = Math.random() * window.innerHeight;
+  const angle = Math.random() * Math.PI * 2;
+  const distance = 180 + Math.random() * 280;
+  const dx = `${Math.cos(angle) * distance}px`;
+  const dy = `${Math.sin(angle) * distance}px`;
+  const rot = `${Math.random() * 360}deg`;
+  const size = 20 + Math.random() * 28;
+
+  emoji.style.left = `${x}px`;
+  emoji.style.top = `${y}px`;
+  emoji.style.setProperty("--dx", dx);
+  emoji.style.setProperty("--dy", dy);
+  emoji.style.setProperty("--rot", rot);
+  emoji.style.fontSize = `${size}px`;
+
+  document.body.appendChild(emoji);
+
+  window.setTimeout(() => {
+    emoji.remove();
+  }, 2700);
 }
 
 </script>
