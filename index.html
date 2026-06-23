@@ -61,6 +61,7 @@
 
     h2 {
       color: #66fcf1;
+      text-align: center;
     }
 
     h3 {
@@ -79,7 +80,7 @@
       margin-bottom: 15px;
     }
 
-    /* PROJECT CARD */
+    /* PROJECT */
     .project {
       border: 1px solid rgba(255,255,255,0.15);
       padding: 20px;
@@ -95,7 +96,7 @@
       border: 1px solid rgba(255,255,255,0.15);
     }
 
-    /* DROPDOWN BUTTON */
+    /* DROPDOWN */
     .dropdown-btn {
       width: 100%;
       padding: 15px;
@@ -131,7 +132,11 @@
       max-height: 2000px;
     }
 
-    /* CERTIFICATES */
+    /* CERTIFICATES (CENTERED FIX) */
+    .certificates {
+      text-align: center;
+    }
+
     .certificates a {
       display: inline-block;
       margin: 10px 10px 0 0;
@@ -154,7 +159,7 @@
 
 <body>
 
-  <!-- BACKGROUND VIDEO -->
+  <!-- BACKGROUND -->
   <video autoplay muted loop playsinline id="bg-video">
     <source src="videos/background.mp4" type="video/mp4">
   </video>
@@ -183,13 +188,10 @@
     <div class="project">
 
       <button class="dropdown-btn" onclick="toggleProject('islandhopper')">
-
         Island Hopper PH
-
         <div class="dropdown-desc">
           Travel & tourism system for itinerary planning, booking, and destination discovery.
         </div>
-
       </button>
 
       <div id="islandhopper" class="dropdown-content">
@@ -232,7 +234,7 @@
 
   </div>
 
-  <!-- CERTIFICATES -->
+  <!-- CERTIFICATES (CENTERED) -->
   <div class="section certificates">
 
     <h2>Certificates</h2>
