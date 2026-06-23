@@ -1,258 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Ralph Clarence V. Pajuleras Portfolio</title>
+<title>Ralph Clarence V. Pajuleras Portfolio</title>
 
-  <style>
+<style>
 
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      line-height: 1.6;
-      padding: 0 20px;
-      color: white;
-      overflow-x: hidden;
-      background: black;
-    }
+body {
+  font-family: Arial, sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+  color: white;
+  background: black;
+}
 
-    /* BACKGROUND VIDEO */
-    #bg-video {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-    }
+/* BACKGROUND VIDEO */
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
 
-    /* DARK OVERLAY */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.60);
-      z-index: -1;
-    }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
 
-    /* SECTIONS */
-    .section {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      padding: 25px;
-      margin-bottom: 25px;
-      border-radius: 16px;
-      box-shadow:
-        0 0 20px rgba(0,255,255,0.15),
-        0 0 40px rgba(0,255,255,0.05);
-    }
+/* SECTIONS */
+.section {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+}
 
-    h1 {
-      font-size: 42px;
-      color: white;
-    }
+/* PROFILE */
+.profile-pic {
+  width: 180px;
+  border-radius: 50%;
+  border: 3px solid #00ffff;
+  margin-bottom: 15px;
+}
 
-    h2 {
-      color: #66fcf1;
-      text-align: center;
-    }
+/* CERT GRID */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  text-align: center;
+}
 
-    h3 {
-      color: white;
-      margin-bottom: 5px;
-    }
+.cert-card {
+  cursor: pointer;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: 0.3s;
+  background: rgba(255,255,255,0.05);
+}
 
-    /* PROFILE */
-    .profile-pic {
-      width: 180px;
-      border-radius: 50%;
-      border: 3px solid #00ffff;
-      box-shadow:
-        0 0 15px #00ffff,
-        0 0 30px rgba(0,255,255,0.5);
-      margin-bottom: 15px;
-    }
+.cert-card:hover {
+  transform: scale(1.05);
+}
 
-    /* PROJECT */
-    .project {
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 20px;
-      margin-top: 15px;
-      border-radius: 12px;
-      background: rgba(255,255,255,0.04);
-    }
+.cert-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
 
-    .project-image {
-      width: 100%;
-      border-radius: 12px;
-      margin-bottom: 15px;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
+.cert-card p {
+  padding: 10px;
+}
 
-    /* DROPDOWN */
-    .dropdown-btn {
-      width: 100%;
-      padding: 15px;
-      background: rgba(0,255,255,0.10);
-      border: 1px solid #00ffff;
-      color: white;
-      font-size: 18px;
-      text-align: left;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
 
-    .dropdown-btn:hover {
-      background: rgba(0,255,255,0.25);
-    }
+.modal-content {
+  width: 90%;
+  height: 90%;
+}
 
-    .dropdown-desc {
-      font-size: 13px;
-      opacity: 0.8;
-      margin-top: 5px;
-    }
+.modal iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
-    /* SMOOTH DROPDOWN */
-    .dropdown-content {
-      max-height: 0;
-      overflow: hidden;
-      margin-top: 15px;
-      transition: max-height 0.5s ease-in-out;
-    }
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+}
 
-    .dropdown-content.open {
-      max-height: 2000px;
-    }
-
-    /* CERTIFICATES (CENTERED FIX) */
-    .certificates {
-      text-align: center;
-    }
-
-    .certificates a {
-      display: inline-block;
-      margin: 10px 10px 0 0;
-      padding: 10px 18px;
-      background: rgba(0,255,255,0.15);
-      border: 1px solid #00ffff;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
-
-    .certificates a:hover {
-      background: #00ffff;
-      color: black;
-    }
-
-  </style>
+</style>
 </head>
 
 <body>
 
-  <!-- BACKGROUND -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="videos/background.mp4" type="video/mp4">
-  </video>
+<!-- BACKGROUND -->
+<video autoplay muted loop playsinline id="bg-video">
+  <source src="videos/background.mp4">
+</video>
 
-  <div class="overlay"></div>
+<div class="overlay"></div>
 
-  <!-- ABOUT -->
-  <div class="section">
+<!-- ABOUT -->
+<div class="section">
 
-    <img src="images/profile.jpg" class="profile-pic" alt="Profile">
+  <img src="images/profile.jpg" class="profile-pic">
 
-    <h1>Ralph Clarence V. Pajuleras</h1>
+  <h1>Ralph Clarence V. Pajuleras</h1>
 
-    <p>
-      I build websites and software projects.
-      Interested in cybersecurity, networking, and web development.
-    </p>
+</div>
 
+<!-- CERTIFICATES -->
+<div class="section">
+
+<h2 style="text-align:center;">Certificates</h2>
+
+<div class="cert-grid">
+
+<!-- Network Security -->
+<div class="cert-card" onclick="openPDF('certificates/NetworkSecurity.pdf')">
+  <img src="images/certs/NetworkSecurity.png">
+  <p>Network Security</p>
+</div>
+
+<!-- HTML & CSS -->
+<div class="cert-card" onclick="openPDF('certificates/HTMLandCSS.pdf')">
+  <img src="images/certs/HTMLandCSS.png">
+  <p>HTML & CSS</p>
+</div>
+
+<!-- Databases -->
+<div class="cert-card" onclick="openPDF('certificates/Databases.pdf')">
+  <img src="images/certs/Databases.png">
+  <p>Databases</p>
+</div>
+
+<!-- Cybersecurity -->
+<div class="cert-card" onclick="openPDF('certificates/Cybersecurity.pdf')">
+  <img src="images/certs/Cybersecurity.png">
+  <p>Cybersecurity</p>
+</div>
+
+<!-- GitHub (NEW) -->
+<div class="cert-card" onclick="openPDF('certificates/GitHub.pdf')">
+  <img src="images/certs/GitHub.png">
+  <p>GitHub</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal" onclick="closeModal()">
+  <span class="close">&times;</span>
+  <div class="modal-content">
+    <iframe id="pdfViewer"></iframe>
   </div>
+</div>
 
-  <!-- PROJECTS -->
-  <div class="section">
+<script>
 
-    <h2>Projects</h2>
+function openPDF(file) {
+  document.getElementById("modal").style.display = "flex";
+  document.getElementById("pdfViewer").src = file;
+}
 
-    <div class="project">
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+  document.getElementById("pdfViewer").src = "";
+}
 
-      <button class="dropdown-btn" onclick="toggleProject('islandhopper')">
-        Island Hopper PH
-        <div class="dropdown-desc">
-          Travel & tourism system for itinerary planning, booking, and destination discovery.
-        </div>
-      </button>
-
-      <div id="islandhopper" class="dropdown-content">
-
-        <img src="images/projects/project1.png" class="project-image">
-        <img src="images/projects/project11.png" class="project-image">
-        <img src="images/projects/project12.png" class="project-image">
-
-        <h3>Island Hopper PH</h3>
-
-        <p>
-          Island Hopper is a travel and tourism management system
-          for local and international travelers, families, backpackers,
-          and travel agencies.
-        </p>
-
-        <p>
-          It provides itinerary planning, budget estimation,
-          navigation, real-time updates, and booking features.
-        </p>
-
-        <p>
-          It helps boost tourism and improve travel accessibility
-          in the Philippines.
-        </p>
-
-        <h3>Technology Stack</h3>
-
-        <ul>
-          <li>C# (ASP.NET Core MVC)</li>
-          <li>SQL Server Management Studio (SSMS)</li>
-          <li>OpenStreetMap API</li>
-          <li>Geolocation API</li>
-          <li>PayPal REST API</li>
-        </ul>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- CERTIFICATES (CENTERED) -->
-  <div class="section certificates">
-
-    <h2>Certificates</h2>
-
-    <a href="certificates/NetworkSecurity.pdf" target="_blank">Network Security</a>
-    <a href="certificates/HTMLandCSS.pdf" target="_blank">HTML and CSS</a>
-    <a href="certificates/Databases.pdf" target="_blank">Databases</a>
-    <a href="certificates/Cybersecurity.pdf" target="_blank">Cybersecurity</a>
-
-  </div>
-
-  <!-- SCRIPT -->
-  <script>
-    function toggleProject(id) {
-      const el = document.getElementById(id);
-      el.classList.toggle("open");
-    }
-  </script>
+</script>
 
 </body>
 </html>
