@@ -462,6 +462,29 @@ h2 { color: #66fcf1; text-align: center; }
   }
 }
 
+.celebration-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1300;
+  font-size: 26px;
+  animation: celebration-burst 1400ms ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes celebration-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(1.4) rotate(var(--rot));
+    opacity: 0;
+  }
+}
+
 .fidget-note {
   margin-top: 12px;
   font-size: 13px;
@@ -919,6 +942,7 @@ function closeModal() {
 
 let fidgetClicks = 0;
 const fidgetEmojis = ["✨", "💫", "🎈", "⚡", "🌟"];
+const celebrationEmojis = ["🎉", "✨", "💥", "🌟", "🎊", "💫", "🥳", "🔥"];
 
 function fidgetClick() {
   fidgetClicks += 1;
@@ -947,6 +971,11 @@ function fidgetClick() {
 
   playFidgetSound();
   spawnFidgetTrail(button);
+
+  if (fidgetClicks % 50 === 0) {
+    triggerCelebration();
+    status.textContent = "Celebration unlocked!";
+  }
 
   window.setTimeout(() => {
     button.classList.remove("bump");
@@ -991,6 +1020,35 @@ function spawnFidgetTrail(button) {
   window.setTimeout(() => {
     emoji.remove();
   }, 1000);
+}
+
+function triggerCelebration() {
+  const burstCount = 60;
+
+  for (let i = 0; i < burstCount; i += 1) {
+    const emoji = document.createElement("span");
+    emoji.className = "celebration-burst";
+    emoji.textContent = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    const dx = `${(Math.random() * 2 - 1) * 260}px`;
+    const dy = `${(Math.random() * 2 - 1) * 220}px`;
+    const rot = `${(Math.random() * 2 - 1) * 220}deg`;
+
+    emoji.style.left = `${x}px`;
+    emoji.style.top = `${y}px`;
+    emoji.style.setProperty("--dx", dx);
+    emoji.style.setProperty("--dy", dy);
+    emoji.style.setProperty("--rot", rot);
+    emoji.style.fontSize = `${18 + Math.random() * 22}px`;
+
+    document.body.appendChild(emoji);
+
+    window.setTimeout(() => {
+      emoji.remove();
+    }, 1500);
+  }
 }
 
 </script>
