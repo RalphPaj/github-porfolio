@@ -79,6 +79,10 @@
       color: #66fcf1;
     }
 
+    h3 {
+      color: #ffffff;
+    }
+
     /* PROFILE IMAGE */
 
     .profile-pic {
@@ -100,13 +104,28 @@
     .project {
       border: 1px solid rgba(255,255,255,0.15);
 
-      padding: 15px;
+      padding: 20px;
 
-      margin-top: 15px;
+      margin-top: 20px;
 
       border-radius: 12px;
 
       background: rgba(255,255,255,0.04);
+    }
+
+    /* PROJECT IMAGES */
+
+    .project-image {
+      width: 100%;
+
+      border-radius: 12px;
+
+      margin-bottom: 15px;
+
+      border: 1px solid rgba(255,255,255,0.15);
+
+      box-shadow:
+        0 0 10px rgba(0,255,255,0.1);
     }
 
     /* CERTIFICATE BUTTONS */
@@ -141,6 +160,10 @@
         0 0 25px #00ffff;
     }
 
+    ul {
+      padding-left: 20px;
+    }
+
   </style>
 </head>
 
@@ -159,8 +182,6 @@
   <!-- ABOUT SECTION -->
 
   <div class="section">
-
-    <!-- PUT YOUR IMAGE IN images/profile.jpg -->
 
     <img src="images/profile.jpg"
          alt="Profile Picture"
@@ -182,25 +203,66 @@
 
     <h2>Projects</h2>
 
+    <!-- ISLAND HOPPER PROJECT -->
+
     <div class="project">
 
-      <h3>Portfolio Website</h3>
+      <img src="images/projects/project1.png"
+           alt="Island Hopper Screenshot 1"
+           class="project-image">
+
+      <img src="images/projects/project11.png"
+           alt="Island Hopper Screenshot 2"
+           class="project-image">
+
+      <img src="images/projects/project12.png"
+           alt="Island Hopper Screenshot 3"
+           class="project-image">
+
+      <h3>Island Hopper</h3>
 
       <p>
-        A modern portfolio website hosted
-        using GitHub Pages.
+        Island Hopper is a travel and tourism management system
+        designed for local travelers, international tourists,
+        families, backpackers, and travel agencies.
       </p>
 
-    </div>
-
-    <div class="project">
-
-      <h3>Cybersecurity Learning Projects</h3>
+      <p>
+        The platform provides detailed destination information,
+        flexible itinerary planning, budget estimation,
+        travel navigation, real-time updates,
+        and convenient booking options.
+      </p>
 
       <p>
-        Hands-on activities involving
-        networking, databases,
-        and cybersecurity concepts.
+        The system helps boost local tourism by making
+        destinations more accessible and appealing,
+        supporting community economic growth,
+        streamlining bookings,
+        and enhancing the Philippines'
+        reputation as a top travel destination.
+      </p>
+
+      <h3>Technology Stack</h3>
+
+      <ul>
+        <li><strong>Programming Language:</strong> C# (ASP.NET Core MVC)</li>
+
+        <li><strong>Database:</strong> SQL Server Management Studio (SSMS)</li>
+
+        <li><strong>APIs:</strong> OpenStreetMap API, Geolocation API, PayPal REST API</li>
+      </ul>
+
+      <p>
+        ASP.NET Core MVC provides a flexible framework
+        for developing a modern web application aligned
+        with the project's requirements.
+      </p>
+
+      <p>
+        SSMS ensures reliable data storage and management,
+        while APIs enhance the platform with live data integration,
+        scalability, security, and efficient performance.
       </p>
 
     </div>
