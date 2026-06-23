@@ -10,16 +10,16 @@
 
 body {
   font-family: Arial, sans-serif;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
   line-height: 1.6;
   padding: 0 20px;
   color: white;
-  overflow-x: hidden;
   background: black;
+  overflow-x: hidden;
 }
 
-/* BACKGROUND VIDEO */
+/* BACKGROUND */
 #bg-video {
   position: fixed;
   top: 0;
@@ -30,28 +30,24 @@ body {
   z-index: -2;
 }
 
-/* DARK OVERLAY */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.60);
+  background: rgba(0,0,0,0.6);
   z-index: -1;
 }
 
 /* SECTIONS */
 .section {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255,255,255,0.08);
   border: 1px solid rgba(255,255,255,0.15);
   backdrop-filter: blur(8px);
   padding: 25px;
   margin-bottom: 25px;
   border-radius: 16px;
-  box-shadow:
-    0 0 20px rgba(0,255,255,0.15),
-    0 0 40px rgba(0,255,255,0.05);
 }
 
 h1 {
@@ -64,75 +60,66 @@ h2 {
   text-align: center;
 }
 
-h3 {
-  color: white;
-  margin-bottom: 5px;
-}
-
 /* PROFILE */
 .profile-pic {
   width: 180px;
   border-radius: 50%;
   border: 3px solid #00ffff;
-  box-shadow:
-    0 0 15px #00ffff,
-    0 0 30px rgba(0,255,255,0.5);
-  margin-bottom: 15px;
 }
 
-/* PROJECT */
-.project {
+/* =========================
+   PROJECT CARDS (NEW STYLE)
+========================= */
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.15);
-  padding: 20px;
-  margin-top: 15px;
-  border-radius: 12px;
-  background: rgba(255,255,255,0.04);
+  border-radius: 16px;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(0,255,255,0.15);
+}
+
+.project-card h3 {
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.project-desc {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* EXPAND CONTENT */
+.project-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  margin-top: 10px;
+}
+
+.project-details.open {
+  max-height: 1500px;
 }
 
 .project-image {
   width: 100%;
   border-radius: 12px;
-  margin-bottom: 15px;
-  border: 1px solid rgba(255,255,255,0.15);
+  margin-top: 10px;
 }
 
-/* DROPDOWN */
-.dropdown-btn {
-  width: 100%;
-  padding: 15px;
-  background: rgba(0,255,255,0.10);
-  border: 1px solid #00ffff;
-  color: white;
-  font-size: 18px;
-  text-align: left;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.dropdown-btn:hover {
-  background: rgba(0,255,255,0.25);
-}
-
-.dropdown-desc {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-top: 5px;
-}
-
-/* SMOOTH DROPDOWN */
-.dropdown-content {
-  max-height: 0;
-  overflow: hidden;
-  margin-top: 15px;
-  transition: max-height 0.5s ease-in-out;
-}
-
-.dropdown-content.open {
-  max-height: 2000px;
-}
-
-/* CERTIFICATES GRID */
+/* CERTIFICATES */
 .cert-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -163,7 +150,6 @@ h3 {
   padding: 10px;
 }
 
-/* CENTER FEATURED CERTIFICATE (GitHub) */
 .cert-featured {
   grid-column: 1 / -1;
   justify-self: center;
@@ -221,11 +207,7 @@ h3 {
   <img src="images/profile.jpg" class="profile-pic">
 
   <h1>Ralph Clarence V. Pajuleras</h1>
-
-  <p>
-    I build websites and software projects.
-    Interested in cybersecurity, networking, and web development.
-  </p>
+  <p>I build websites and software projects. Interested in cybersecurity, networking, and web development.</p>
 
 </div>
 
@@ -234,43 +216,43 @@ h3 {
 
 <h2>Projects</h2>
 
-<div class="project">
+<div class="project-grid">
 
-<button class="dropdown-btn" onclick="toggle('p1')">
-Island Hopper PH
-</button>
+<!-- PROJECT 1 -->
+<div class="project-card" onclick="toggleProject('p1')">
+  <h3>Island Hopper PH</h3>
+  <div class="project-desc">
+    Travel & tourism system for itinerary planning, booking, and destination discovery.
+  </div>
 
-<div id="p1" class="dropdown-content">
+  <div id="p1" class="project-details">
 
-<img src="images/projects/project1.png" class="project-image">
-<img src="images/projects/project11.png" class="project-image">
-<img src="images/projects/project12.png" class="project-image">
+    <img src="images/projects/project1.png" class="project-image">
+    <img src="images/projects/project11.png" class="project-image">
+    <img src="images/projects/project12.png" class="project-image">
 
-<h3>Island Hopper PH</h3>
+    <p>
+      A travel and tourism management system designed for local travelers, international tourists, families, backpackers, and travel agencies.
+    </p>
 
-<!-- ✅ MOVED BRIEF DESCRIPTION UNDER TITLE -->
-<p>
-A travel and tourism management system designed for local travelers, international tourists, families, backpackers, and travel agencies.
-</p>
+    <p>
+      It provides itinerary planning, budget estimation, navigation, real-time updates, and booking features.
+    </p>
 
-<p>
-It provides detailed destination information, itinerary planning, budget estimation, navigation, real-time updates, and booking features.
-</p>
+    <p>
+      It helps boost local tourism and improves travel accessibility in the Philippines.
+    </p>
 
-<p>
-It helps boost local tourism, supports economic growth, and improves travel accessibility in the Philippines.
-</p>
+    <h3>Technology Stack</h3>
+    <ul>
+      <li>C# (ASP.NET Core MVC)</li>
+      <li>SQL Server Management Studio (SSMS)</li>
+      <li>OpenStreetMap API</li>
+      <li>Geolocation API</li>
+      <li>PayPal REST API</li>
+    </ul>
 
-<h3>Technology Stack</h3>
-
-<ul>
-  <li>C# (ASP.NET Core MVC)</li>
-  <li>SQL Server Management Studio (SSMS)</li>
-  <li>OpenStreetMap API</li>
-  <li>Geolocation API</li>
-  <li>PayPal REST API</li>
-</ul>
-
+  </div>
 </div>
 
 </div>
@@ -321,11 +303,11 @@ It helps boost local tourism, supports economic growth, and improves travel acce
   </div>
 </div>
 
-<!-- SCRIPT -->
 <script>
 
-function toggle(id) {
-  document.getElementById(id).classList.toggle("open");
+function toggleProject(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle("open");
 }
 
 function openPDF(file) {
