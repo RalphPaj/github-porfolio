@@ -12,12 +12,14 @@ body {
   font-family: Arial, sans-serif;
   max-width: 900px;
   margin: 40px auto;
+  line-height: 1.6;
   padding: 0 20px;
   color: white;
+  overflow-x: hidden;
   background: black;
 }
 
-/* BACKGROUND VIDEO */
+/* BACKGROUND */
 #bg-video {
   position: fixed;
   top: 0;
@@ -53,6 +55,42 @@ body {
   width: 180px;
   border-radius: 50%;
   border: 3px solid #00ffff;
+}
+
+/* PROJECT */
+.project {
+  padding: 20px;
+  margin-top: 15px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* DROPDOWN */
+.dropdown-btn {
+  width: 100%;
+  padding: 15px;
+  background: rgba(0,255,255,0.1);
+  border: 1px solid #00ffff;
+  color: white;
+  font-size: 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.dropdown-content.open {
+  max-height: 2000px;
+}
+
+/* PROJECT IMAGES */
+.project-image {
+  width: 100%;
+  border-radius: 12px;
   margin-bottom: 15px;
 }
 
@@ -69,8 +107,8 @@ body {
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.2);
-  transition: 0.3s;
   background: rgba(255,255,255,0.05);
+  transition: 0.3s;
 }
 
 .cert-card:hover {
@@ -118,7 +156,10 @@ body {
   right: 30px;
   font-size: 30px;
   cursor: pointer;
-  color: white;
+}
+
+.cert-title {
+  text-align: center;
 }
 
 </style>
@@ -135,48 +176,65 @@ body {
 
 <!-- ABOUT -->
 <div class="section">
-
   <img src="images/profile.jpg" class="profile-pic">
-
   <h1>Ralph Clarence V. Pajuleras</h1>
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+
+<h2>Projects</h2>
+
+<div class="project">
+
+<button class="dropdown-btn" onclick="toggle('p1')">
+Island Hopper PH
+</button>
+
+<div id="p1" class="dropdown-content">
+
+<img src="images/projects/project1.png" class="project-image">
+<img src="images/projects/project11.png" class="project-image">
+<img src="images/projects/project12.png" class="project-image">
+
+<p>Travel & tourism system for itinerary planning, booking, and destinations.</p>
+
+</div>
+
+</div>
 
 </div>
 
 <!-- CERTIFICATES -->
 <div class="section">
 
-<h2 style="text-align:center;">Certificates</h2>
+<h2 class="cert-title">Certificates</h2>
 
 <div class="cert-grid">
 
-<!-- Network Security -->
 <div class="cert-card" onclick="openPDF('certificates/NetworkSecurity.pdf')">
-  <img src="images/certs/NetworkSecurity.png">
-  <p>Network Security</p>
+<img src="images/certs/NetworkSecurity.png">
+<p>Network Security</p>
 </div>
 
-<!-- HTML & CSS -->
 <div class="cert-card" onclick="openPDF('certificates/HTMLandCSS.pdf')">
-  <img src="images/certs/HTMLandCSS.png">
-  <p>HTML & CSS</p>
+<img src="images/certs/HTMLandCSS.png">
+<p>HTML & CSS</p>
 </div>
 
-<!-- Databases -->
 <div class="cert-card" onclick="openPDF('certificates/Databases.pdf')">
-  <img src="images/certs/Databases.png">
-  <p>Databases</p>
+<img src="images/certs/Databases.png">
+<p>Databases</p>
 </div>
 
-<!-- Cybersecurity -->
 <div class="cert-card" onclick="openPDF('certificates/Cybersecurity.pdf')">
-  <img src="images/certs/Cybersecurity.png">
-  <p>Cybersecurity</p>
+<img src="images/certs/Cybersecurity.png">
+<p>Cybersecurity</p>
 </div>
 
-<!-- GitHub (NEW) -->
 <div class="cert-card" onclick="openPDF('certificates/GitHub.pdf')">
-  <img src="images/certs/GitHub.png">
-  <p>GitHub</p>
+<img src="images/certs/GitHub.png">
+<p>GitHub</p>
 </div>
 
 </div>
@@ -191,7 +249,12 @@ body {
   </div>
 </div>
 
+<!-- SCRIPT -->
 <script>
+
+function toggle(id) {
+  document.getElementById(id).classList.toggle("open");
+}
 
 function openPDF(file) {
   document.getElementById("modal").style.display = "flex";
